@@ -9,7 +9,7 @@ import java.lang.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class App extends FluentTest {
+public class AppTest extends FluentTest {
   public WebDriver webDriver = new HtmlUnitDriver();
   public WebDriver getDefaultDriver() {
     return webDriver;
