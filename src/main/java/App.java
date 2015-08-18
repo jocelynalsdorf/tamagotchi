@@ -16,14 +16,7 @@ import static spark.Spark.*;
 public class App{
   public static void main(String[] args) {
     String layout = "templates/layout.vtl";
-
-    get("/", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/home.vtl");
-
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
+    staticFileLocation("/public");
     Tamagotchi newTama = new Tamagotchi("Alice");
     Timer timer = new Timer();
     timer.scheduleAtFixedRate(new TimerTask() {
@@ -31,7 +24,28 @@ public class App{
          newTama.decrementLevels();
          System.out.println(newTama.getFoodLevel());
        }
-     },1000,10000);
+     },1000,20000);
+
+    get("/", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/home.vtl");
+      // model.put("name", request.session().attribute("name"));
+
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
+     post("/home", (request, response) -> {
+       HashMap<String, Object> model = new HashMap<String, Object>();
+       model.put("template", "templates/home.vtl");
+
+       String name = request.queryParams("name");
+       request.session().attribute("name", name);
+       model.put("name", request.session().attribute("name"));
+      //  model.put("name", name);
+
+      return new ModelAndView(model, layout);
+     }, new VelocityTemplateEngine());
 
  }
 }
