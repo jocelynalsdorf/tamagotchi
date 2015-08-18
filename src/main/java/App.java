@@ -47,6 +47,7 @@ public class App{
        model.put("name", request.session().attribute("name"));
        request.session().attribute("myTama");
        model.put("myTama", request.session().attribute("myTama"));
+       request.session().attribute("userInput");
        return new ModelAndView(model, layout);
      }, new VelocityTemplateEngine());
 
@@ -57,14 +58,16 @@ public class App{
        String userInput = request.queryParams("userInput");
        request.session().attribute("userInput", userInput);
        model.put("userInput", request.session().attribute("userInput"));
-
-
+      //
+      //  if (userInput == "feed") {
+      //    .setFoodLevel(12);
+      //  }
        request.session().attribute("name");
        request.session().attribute("myTama");
 
-      model.put("name", request.session().attribute("name"));
-      model.put("myTama", request.session().attribute("myTama"));
-      return new ModelAndView(model, layout);
+       model.put("name", request.session().attribute("name"));
+       model.put("myTama", request.session().attribute("myTama"));
+       return new ModelAndView(model, layout);
      }, new VelocityTemplateEngine());
 
 
