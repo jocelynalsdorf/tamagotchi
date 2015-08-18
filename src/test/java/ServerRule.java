@@ -9,5 +9,4 @@ public class ServerRule extends ExternalResource {
   protected void after(){
     Spark.stop();
   }
-
 }
