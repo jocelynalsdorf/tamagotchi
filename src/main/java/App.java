@@ -29,7 +29,7 @@ public class App{
     get("/", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/home.vtl");
-      // model.put("name", request.session().attribute("name"));
+
 
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -42,9 +42,16 @@ public class App{
        String name = request.queryParams("name");
        request.session().attribute("name", name);
        model.put("name", request.session().attribute("name"));
-      //  model.put("name", name);
 
       return new ModelAndView(model, layout);
+     }, new VelocityTemplateEngine());
+
+     get("/checker", (request, response) -> {
+       HashMap<String, Object> model = new HashMap<String, Object>();
+       model.put("template", "templates/checker.vtl");
+       model.put("name", request.session().attribute("name"));
+
+       return new ModelAndView(model, layout);
      }, new VelocityTemplateEngine());
 
  }
