@@ -43,11 +43,30 @@ public class App{
      get("/checker", (request, response) -> {
        HashMap<String, Object> model = new HashMap<String, Object>();
        model.put("template", "templates/checker.vtl");
+       request.session().attribute("name");
        model.put("name", request.session().attribute("name"));
        request.session().attribute("myTama");
        model.put("myTama", request.session().attribute("myTama"));
        return new ModelAndView(model, layout);
      }, new VelocityTemplateEngine());
+
+     post("/checker", (request, response) -> {
+       HashMap<String, Object> model = new HashMap<String, Object>();
+       model.put("template", "templates/checker.vtl");
+
+       String userInput = request.queryParams("userInput");
+       request.session().attribute("userInput", userInput);
+       model.put("userInput", request.session().attribute("userInput"));
+
+
+       request.session().attribute("name");
+       request.session().attribute("myTama");
+
+      model.put("name", request.session().attribute("name"));
+      model.put("myTama", request.session().attribute("myTama"));
+      return new ModelAndView(model, layout);
+     }, new VelocityTemplateEngine());
+
 
 //timer starts here
        Tamagotchi myTama = new Tamagotchi("Alice");
