@@ -9,4 +9,23 @@ public class Tamagotchi {
   public Tamagotchi(String name) {
     mName = name;
   }
-}
+
+   public int getFoodLevel() {
+     return mFoodLevel;
+   }
+   public int getSleepLevel() {
+     return mSleepLevel;
+   }
+   public int getActivityLevel() {
+     return mActivityLevel;
+   }
+
+   public void setFoodLevel(int foodLevel) {
+     mFoodLevel = foodLevel;
+   }
+   public void setSleepLevel(int sleepLevel) {
+     mSleepLevel = sleepLevel;
+   }
+   public void setActivityLevel(int activityLevel) {
+     mActivityLevel = activityLevel;
+   }
