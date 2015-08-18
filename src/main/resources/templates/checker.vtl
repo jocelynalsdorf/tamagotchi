@@ -1,4 +1,13 @@
+
+#if ($myTama)
 <h1>Tamagotchi Pet Health Checker for $name</h1>
+<div class="well">
+  <h2>$name's current food level is:$myTama.getFoodLevel()</h2>
+  <h2>$name's current sleep level is:$myTama.getSleepLevel()</h2>
+  <h2>$name's current activity level is:$myTama.getActivityLevel()</h2>
+</div>
+#else
+  <h3>You need to create one first!!</h3>
+#end
 
-
-<p>$myTama.getFoodLevel()</p>
+<a href='/'>Home</a>

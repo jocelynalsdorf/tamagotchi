@@ -50,12 +50,12 @@ public class App{
      }, new VelocityTemplateEngine());
 
 //timer starts here
-       Tamagotchi newTama = new Tamagotchi("Alice");
+       Tamagotchi myTama = new Tamagotchi("Alice");
        Timer timer = new Timer();
        timer.scheduleAtFixedRate(new TimerTask() {
           public void run() {
-            newTama.decrementLevels();
-            System.out.println(newTama.getFoodLevel());
+            myTama.decrementLevels();
+            System.out.println(myTama.getFoodLevel());
           }
         },1000,20000);
 
