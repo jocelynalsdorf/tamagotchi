@@ -29,3 +29,9 @@ public class Tamagotchi {
    public void setActivityLevel(int activityLevel) {
      mActivityLevel = activityLevel;
    }
+   public void decrementLevels() {
+     mFoodLevel -= 10;
+     mSleepLevel -= 6;
+     mActivityLevel -= 4;
+   }
+}
