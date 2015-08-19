@@ -24,13 +24,13 @@ public class Tamagotchi {
    }
 
    public void setFoodLevel(int foodLevel) {
-     mFoodLevel = foodLevel;
+     mFoodLevel += foodLevel;
    }
    public void setSleepLevel(int sleepLevel) {
-     mSleepLevel = sleepLevel;
+     mSleepLevel += sleepLevel;
    }
    public void setActivityLevel(int activityLevel) {
-     mActivityLevel = activityLevel;
+     mActivityLevel += activityLevel;
    }
    public void decrementLevels() {
      mFoodLevel -= 10;

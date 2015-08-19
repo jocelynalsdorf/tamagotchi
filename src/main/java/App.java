@@ -70,7 +70,11 @@ public class App{
        Tamagotchi myTama = request.session().attribute("myTama");
 
        if (userInput.equals("feed")) {
-         myTama.setFoodLevel(12);
+         myTama.setFoodLevel(4);
+       } else if (userInput.equals("sleep")) {
+         myTama.setSleepLevel(6);
+       }else if (userInput.equals("activity")) {
+         myTama.setActivityLevel(3);
        }
 
        request.session().attribute("name");
