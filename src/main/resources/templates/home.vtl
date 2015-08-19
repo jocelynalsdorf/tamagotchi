@@ -1,18 +1,21 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8 well">
 
+		#if ($myTama)
+		  <h1> Welcome back owner of $myTama.getName()</h1>
+		#else
+		<form action="/home" method="post">
+		  <div class="form-group">
+		    <label for="name">Give Your Pet Tamagotchi a name!!</label>
+		    <input id="name" name="name" type="text">
+		  </div>
 
-#if ($myTama)
-
-  <p> Welcome back owner of $myTama.getName()</p>
-#else
-<form action="/home" method="post">
-  <div class="form-group">
-    <label for="name">Name Your Pet</label>
-    <input id="name" name="name" type="text">
-  </div>
-
-  <button type="submit" class="btn">Submit</button>
-</form>
-#end
-
-
-<a href="/checker">Check my Pet</a>
+		  <button type="submit" class="btn btn-wide">Submit</button>
+		</form>
+		#end
+	<img src="../images/kp.png">
+		<p class="check-link"><a href="/checker">Check my on my Pet</a></p>
+		</div>
+	<div class="col-md-2"></div>
+</div>

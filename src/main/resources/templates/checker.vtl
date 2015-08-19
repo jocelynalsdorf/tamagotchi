@@ -1,34 +1,39 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8 ">
+    #if ($myTama)
+    <h1>Tamagotchi Pet Health Checker for $myTama.getName()</h1>
+    <div class="well">
+      <h2>$myTama.getName()'s current food level is: $myTama.getFoodLevel()</h2>
+      <h2>$myTama.getName()'s current sleep level is: $myTama.getSleepLevel()</h2>
+      <h2>$myTama.getName()'s current activity level is: $myTama.getActivityLevel()</h2>
+    </div>
 
-#if ($myTama)
-<h1>Tamagotchi Pet Health Checker for $myTama.getName()</h1>
-<div class="well">
-  <h2>$myTama.getName()'s current food level is:$myTama.getFoodLevel()</h2>
-  <h2>$myTama.getName()'s current sleep level is:$myTama.getSleepLevel()</h2>
-  <h2>$myTama.getName()'s current activity level is:$myTama.getActivityLevel()</h2>
+  
+    <form action="/checker" method="post" class="well">
+      <div class="form-group">
+        <label for="feed">Feed Your Pet</label>
+        <input id="feed" name="userInput" type="radio" value="feed" checked>
+      </div>
+      <div class="form-group">
+        <label for="sleep">Put Your Pet to Sleep</label>
+        <input id="sleep" name="userInput" type="radio" value="sleep">
+      </div>
+      <div class="form-group">
+        <label for="activity">Exercise Your Pet</label>
+        <input id="activity" name="userInput" type="radio" value="activity">
+      </div>
+
+      <button type="submit" class="btn btn-wide">Submit</button>
+    </form>
+    </form>
+
+
+    #else
+      <h3>You need to create one first!!</h3>
+    #end
+
+    <a href='/' class="home-link">Home</a>
+    </div>
+    <div class="col-md-2"></div>
 </div>
-
-$userInput
-<form action="/checker" method="post">
-  <div class="form-group">
-    <label for="feed">Feed Your Pet</label>
-    <input id="feed" name="userInput" type="radio" value="feed" checked>
-  </div>
-  <div class="form-group">
-    <label for="sleep">Put Your Pet to Sleep</label>
-    <input id="sleep" name="userInput" type="radio" value="sleep">
-  </div>
-  <div class="form-group">
-    <label for="activity">Exercise Your Pet</label>
-    <input id="activity" name="userInput" type="radio" value="activity">
-  </div>
-
-  <button type="submit" class="btn">Submit</button>
-</form>
-</form>
-
-
-#else
-  <h3>You need to create one first!!</h3>
-#end
-
-<a href='/'>Home</a>
