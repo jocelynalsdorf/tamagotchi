@@ -58,12 +58,14 @@ public class App{
        String userInput = request.queryParams("userInput");
        request.session().attribute("userInput", userInput);
        model.put("userInput", request.session().attribute("userInput"));
-      //
-      //  if (userInput == "feed") {
-      //    .setFoodLevel(12);
-      //  }
+
+       Tamagotchi myTama = request.session().attribute("myTama");
+
+       if (userInput == "feed") {
+         myTama.setFoodLevel(12);
+       }
+
        request.session().attribute("name");
-       request.session().attribute("myTama");
 
        model.put("name", request.session().attribute("name"));
        model.put("myTama", request.session().attribute("myTama"));
