@@ -24,7 +24,8 @@ public class App{
      
       request.session().attribute("myTama");
       model.put("template", "templates/home.vtl");
-      
+
+      //without this line, tama is not persisting when returning from var routes
       model.put("myTama", request.session().attribute("myTama"));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -33,26 +34,28 @@ public class App{
      post("/home", (request, response) -> {
        HashMap<String, Object> model = new HashMap<String, Object>();
        model.put("template", "templates/home.vtl");
-
+      //gather input to create tama
        String name = request.queryParams("name");
-       //request.session().attribute("name", name);
-
+       //Create tama and story model in session
        Tamagotchi myTama = new Tamagotchi(name);
        request.session().attribute("myTama", myTama);
-
-       //model.put("name", request.session().attribute("name"));
        model.put("myTama", request.session().attribute("myTama"));
+
       return new ModelAndView(model, layout);
      }, new VelocityTemplateEngine());
 
      get("/checker", (request, response) -> {
        HashMap<String, Object> model = new HashMap<String, Object>();
        model.put("template", "templates/checker.vtl");
-       request.session().attribute("name");
-       model.put("name", request.session().attribute("name"));
+
+       request.session().attribute("userInput");
+       //store in model so when return from another page its there still
+       model.put("userInput", request.session().attribute("userInput"));
+
+       
+
        request.session().attribute("myTama");
        model.put("myTama", request.session().attribute("myTama"));
-       request.session().attribute("userInput");
        return new ModelAndView(model, layout);
      }, new VelocityTemplateEngine());
 
@@ -66,7 +69,7 @@ public class App{
 
        Tamagotchi myTama = request.session().attribute("myTama");
 
-       if (userInput == "feed") {
+       if (userInput.equals("feed")) {
          myTama.setFoodLevel(12);
        }
 
