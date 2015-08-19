@@ -37,4 +37,5 @@ public class Tamagotchi {
      mSleepLevel -= 6;
      mActivityLevel -= 4;
    }
+    
 }

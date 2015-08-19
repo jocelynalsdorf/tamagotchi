@@ -19,6 +19,7 @@ public class App{
     staticFileLocation("/public");
 
 
+
     get("/", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
      
@@ -27,6 +28,8 @@ public class App{
 
       //without this line, tama is not persisting when returning from var routes
       model.put("myTama", request.session().attribute("myTama"));
+
+
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -40,7 +43,7 @@ public class App{
        Tamagotchi myTama = new Tamagotchi(name);
        request.session().attribute("myTama", myTama);
        model.put("myTama", request.session().attribute("myTama"));
-
+  
       return new ModelAndView(model, layout);
      }, new VelocityTemplateEngine());
 
@@ -51,7 +54,15 @@ public class App{
        request.session().attribute("userInput");
        //store in model so when return from another page its there still
        model.put("userInput", request.session().attribute("userInput"));
+      Tamagotchi myTama = request.session().attribute("myTama");
 
+       Timer timer = new Timer();
+       timer.scheduleAtFixedRate(new TimerTask() {
+          public void run() {
+            myTama.decrementLevels();
+            
+          }
+        },1000, 10000);
        
 
        request.session().attribute("myTama");
@@ -77,6 +88,7 @@ public class App{
          myTama.setActivityLevel(3);
        }
 
+
        request.session().attribute("name");
 
        model.put("name", request.session().attribute("name"));
@@ -85,15 +97,7 @@ public class App{
      }, new VelocityTemplateEngine());
 
 
-//timer starts here
-       Tamagotchi myTama = new Tamagotchi("Alice");
-       Timer timer = new Timer();
-       timer.scheduleAtFixedRate(new TimerTask() {
-          public void run() {
-            myTama.decrementLevels();
-            System.out.println(myTama.getFoodLevel());
-          }
-        },1000,20000);
+    
 
  }
 }
