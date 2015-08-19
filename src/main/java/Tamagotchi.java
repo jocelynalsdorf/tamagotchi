@@ -4,12 +4,15 @@ public class Tamagotchi {
   private int mSleepLevel = 100;
   private int mActivityLevel = 100;
 
+
   private String mName;
 
   public Tamagotchi(String name) {
     mName = name;
   }
-
+  public String getName() {
+    return mName;
+  }
    public int getFoodLevel() {
      return mFoodLevel;
    }

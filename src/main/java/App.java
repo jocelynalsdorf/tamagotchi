@@ -21,7 +21,11 @@ public class App{
 
     get("/", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
+     
+      request.session().attribute("myTama");
       model.put("template", "templates/home.vtl");
+      
+      model.put("myTama", request.session().attribute("myTama"));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -31,11 +35,12 @@ public class App{
        model.put("template", "templates/home.vtl");
 
        String name = request.queryParams("name");
-       request.session().attribute("name", name);
+       //request.session().attribute("name", name);
+
        Tamagotchi myTama = new Tamagotchi(name);
        request.session().attribute("myTama", myTama);
 
-       model.put("name", request.session().attribute("name"));
+       //model.put("name", request.session().attribute("name"));
        model.put("myTama", request.session().attribute("myTama"));
       return new ModelAndView(model, layout);
      }, new VelocityTemplateEngine());

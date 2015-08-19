@@ -1,7 +1,8 @@
 
 
-#if ($name)
-  <p> Welcome back owner of $name</p>
+#if ($myTama)
+
+  <p> Welcome back owner of $myTama.getName()</p>
 #else
 <form action="/home" method="post">
   <div class="form-group">
