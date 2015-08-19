@@ -64,6 +64,7 @@ public class App{
           }
         },1000, 10000);
        
+
 //makes the mytama created in home route available in this view
        request.session().attribute("myTama");
        model.put("myTama", request.session().attribute("myTama"));

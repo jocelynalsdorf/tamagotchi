@@ -26,7 +26,10 @@ body{
 	width:100%;
 
 }
-
+.killer {
+	font-size:50px;
+	color:red;
+}
 .check-link {
 	padding-top: 100px; 
   font-size: 48px; 

@@ -9,7 +9,9 @@
       <h2>$myTama.getName()'s current activity level is: $myTama.getActivityLevel()</h2>
     </div>
 
-  
+    #if ($myTama.isDead())
+    <h1 class="killer">OMG!!!!You killed your pet</h1>
+    #end
     <form action="/checker" method="post" class="well">
       <div class="form-group">
         <label for="feed">Feed Your Pet</label>
@@ -27,7 +29,7 @@
       <button type="submit" class="btn btn-wide">Submit</button>
     </form>
     </form>
-
+      
 
     #else
       <h3>You need to create one first!!</h3>

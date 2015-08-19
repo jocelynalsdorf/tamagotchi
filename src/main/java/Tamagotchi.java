@@ -1,8 +1,8 @@
 public class Tamagotchi {
 
-  private int mFoodLevel = 100;
-  private int mSleepLevel = 100;
-  private int mActivityLevel = 100;
+  private int mFoodLevel = 20;
+  private int mSleepLevel = 20;
+  private int mActivityLevel = 20;
 
 
   private String mName;
@@ -37,5 +37,12 @@ public class Tamagotchi {
      mSleepLevel -= 6;
      mActivityLevel -= 4;
    }
-    
+
+    public Boolean isDead() {
+     if (mFoodLevel <= 0 || mSleepLevel <= 0 || mActivityLevel <= 0 ) {
+      return true;
+    } else {
+      return false;
+    }
+}
 }
